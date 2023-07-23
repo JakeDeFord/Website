@@ -1,0 +1,17 @@
+/* Resume.css */
+.resizable-box {
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    height: 80vh; /* Set the initial height (viewport height) */
+    min-height: 300px; /* Set the minimum height */
+    margin: 0 auto;
+  }
+  
+  /* Apply mobile-specific styles using media queries */
+  @media (max-width: 767px) {
+    .resizable-box {
+      max-width: 90vw; /* Adjust the maximum width for mobile devices */
+      height: 60vh; /* Adjust the height for mobile devices */
+    }
+  }
+  
