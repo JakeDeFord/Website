@@ -1,17 +1,33 @@
-/* Resume.css */
 .resizable-box {
-    width: 100%;
-    max-width: 600px; /* Adjust the maximum width as needed */
-    height: 80vh; /* Set the initial height (viewport height) */
-    min-height: 300px; /* Set the minimum height */
-    margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 140%; 
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 767px) {
+  .resizable-box {
+    max-width: 90vw; 
+    display: flex;
+    justify-content: center; 
+    padding-top: 20px;
   }
-  
-  /* Apply mobile-specific styles using media queries */
-  @media (max-width: 767px) {
-    .resizable-box {
-      max-width: 90vw; /* Adjust the maximum width for mobile devices */
-      height: 60vh; /* Adjust the height for mobile devices */
-    }
+
+  .iframe-container {
+    padding-top: 140%; 
   }
-  
+}
