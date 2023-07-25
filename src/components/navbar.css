@@ -27,8 +27,8 @@ a {
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    align-items: flex-start;
-    /* Align items to the left */
+    align-items: center;
+    /* Align items to the center when the menu is active */
   }
 
   .header {
@@ -36,9 +36,7 @@ a {
     align-items: center;
     margin-bottom: 10px;
     justify-content: space-between;
-    /* Align header to the left and menu icon to the right */
     width: 100%;
-    /* Take full width to push the menu icon to the right */
   }
 
   .header h2 {
@@ -53,8 +51,8 @@ a {
   ul {
     display: none;
     flex-direction: column;
-    align-items: flex-end;
-    /* Align menu items to the right */
+    align-items: center;
+    /* Align menu items to the center when the menu is active */
   }
 
   .menu-icon.open {
@@ -64,6 +62,7 @@ a {
   .dropdown-menu {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    /* Center the dropdown menu */
   }
 }

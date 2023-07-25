@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
-const headImage = process.env.PUBLIC_URL + '/headshot.jpg';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,31 +23,31 @@ function Navbar() {
         </div>
       </div>
 
-      <ul className={isMenuOpen ? 'dropdown-menu' : ''}>
-        <li>
-          <Link to="/" onClick={closeMenu}>
-            Home
-          </Link>
-        </li>
-        <li>
-          <img src={headImage} alt="Logo" width="100" height="100" />
-        </li>
-        <li>
-          <Link to="/about" onClick={closeMenu}>
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/resume" onClick={closeMenu}>
-            Resume
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" onClick={closeMenu}>
-            Contact
-          </Link>
-        </li>
-      </ul>
+      {isMenuOpen ? (
+        /* Dropdown menu on mobile when the menu is active */
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/" onClick={closeMenu}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" onClick={closeMenu}>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/resume" onClick={closeMenu}>
+              Resume
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" onClick={closeMenu}>
+              Contact
+            </Link>
+          </li>
+        </ul>
+      ) : null}
     </nav>
   );
 }
