@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './navbar.css';
 
 function Navbar() {
+  const isMobile = navigator.maxTouchPoints > 0;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,13 +19,15 @@ function Navbar() {
       {/* Header and menu icon for mobile */}
       <div className="header">
         <h2>Jake DeFord</h2>
-        <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-          &#9776;
-        </div>
+        {isMobile && (
+          <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+            &#9776;
+          </div>
+        )}
       </div>
 
       {/* Dropdown menu on mobile when the menu is active */}
-      {isMenuOpen && (
+      {isMobile && isMenuOpen ? (
         <ul className="dropdown-menu">
           <li>
             <Link to="/" onClick={closeMenu}>
@@ -45,6 +48,22 @@ function Navbar() {
             <Link to="/contact" onClick={closeMenu}>
               Contact
             </Link>
+          </li>
+        </ul>
+      ) : (
+        // Regular menu for larger screens
+        <ul className="regular-menu">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/resume">Resume</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       )}
