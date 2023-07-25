@@ -1,31 +1,69 @@
 /* navbar.css */
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
 
-.navbar {
-    background-color: #f1f1f1;
-    padding: 10px;
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-right: 10px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Mobile version styles */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align items to the left */
+  }
+
+  .header {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    /* Align header to the left and menu icon to the right */
+    width: 100%;
+    /* Take full width to push the menu icon to the right */
   }
-  
-  .navbar ul {
-    list-style-type: none;
+
+  .header h2 {
     margin: 0;
-    padding: 0;
   }
-  
-  .navbar li {
-    display: inline-block;
-    margin-left: 10px;
+
+  .menu-icon {
+    font-size: 20px;
+    cursor: pointer;
   }
-  
-  .navbar a {
-    text-decoration: none;
-    color: #333;
-    padding: 8px 16px;
-    border-radius: 4px;
+
+  ul {
+    display: none;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Align menu items to the right */
   }
-  
-  .navbar a:hover {
-    background-color: #ddd;
+
+  .menu-icon.open {
+    display: block;
   }
-  
+
+  .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
