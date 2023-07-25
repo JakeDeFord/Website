@@ -23,8 +23,8 @@ function Navbar() {
         </div>
       </div>
 
-      {isMenuOpen ? (
-        /* Dropdown menu on mobile when the menu is active */
+      {/* Dropdown menu on mobile when the menu is active */}
+      {isMenuOpen && (
         <ul className="dropdown-menu">
           <li>
             <Link to="/" onClick={closeMenu}>
@@ -47,7 +47,7 @@ function Navbar() {
             </Link>
           </li>
         </ul>
-      ) : null}
+      )}
     </nav>
   );
 }
