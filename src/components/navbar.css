@@ -28,7 +28,6 @@ a {
   nav {
     flex-direction: column;
     align-items: center;
-    /* Align items to the center when the menu is active */
   }
 
   .header {
@@ -52,7 +51,6 @@ a {
     display: none;
     flex-direction: column;
     align-items: center;
-    /* Align menu items to the center when the menu is active */
   }
 
   .menu-icon.open {
@@ -63,6 +61,10 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center the dropdown menu */
+  }
+
+  /* Add margin between each item in the dropdown menu */
+  .dropdown-menu li {
+    margin-bottom: 10px;
   }
 }
