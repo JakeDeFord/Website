@@ -1,0 +1,29 @@
+/* footer.css */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.footer p {
+    margin-bottom: 5px;
+    /* Add some spacing between the text and buttons */
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    /* Center the buttons horizontally */
+    margin-top: 5px;
+    /* Add some spacing between the text and buttons */
+}
+
+.footer-button {
+    width: 25px;
+    /* Adjust the width and height as needed */
+    height: 25px;
+    margin: 0 5px;
+    /* Add some spacing between the buttons */
+    cursor: pointer;
+}
