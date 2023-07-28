@@ -33,8 +33,7 @@ body {
         /* Remove flex-grow to let the height be determined by content on mobile */
         flex-grow: initial;
         /* Adjust padding for mobile to create space for the footer */
-        padding-bottom: 40px;
-        /* Adjust this value based on your footer's height */
+        margin-bottom: 60px;
     }
 
     .project-content {
