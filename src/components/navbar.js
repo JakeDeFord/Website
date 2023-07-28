@@ -40,6 +40,11 @@ function Navbar() {
             </Link>
           </li>
           <li>
+            <Link to="/projects" onClick={closeMenu}>
+              Projects
+            </Link>
+          </li>
+          <li>
             <Link to="/resume" onClick={closeMenu}>
               Resume
             </Link>
@@ -58,6 +63,9 @@ function Navbar() {
           </li>
           <li>
             <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/projects">Projects</Link>
           </li>
           <li>
             <Link to="/resume">Resume</Link>
