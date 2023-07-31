@@ -1,0 +1,30 @@
+.about-me-container {
+    display: flex;
+}
+
+.image-container {
+    margin-right: 20px;
+}
+
+.text-container {
+    text-align: left;
+    /* Align text to the left */
+}
+
+@media(max-width: 768px) {
+    .about-me-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+    }
+
+    .image-container {
+        margin-right: 20px;
+    }
+
+    .text-container {
+        text-align: left;
+        /* Align text to the left */
+    }
+}
