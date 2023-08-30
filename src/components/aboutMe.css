@@ -7,7 +7,7 @@
 }
 
 .text-container {
-    text-align: left;
+    text-align: center;
     /* Align text to the left */
 }
 
@@ -24,7 +24,7 @@
     }
 
     .text-container {
-        text-align: left;
+        text-align: center;
         /* Align text to the left */
     }
 }

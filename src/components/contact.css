@@ -1,0 +1,27 @@
+/* contact.css */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-method {
+    margin-top: 15px;
+}
+
+.contact-label {
+    font-weight: bold;
+}
+
+/* Style the links within the Contact section */
+.contact-container a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    /* Change this color as needed */
+}
+
+span {
+    margin-right: 10px;
+}
