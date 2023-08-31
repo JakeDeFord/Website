@@ -4,7 +4,7 @@ import './contact.css';
 function Contact() {
   return (
     <div className="contact-container">
-      <h2>Contact</h2>
+      <h2>Contact Me</h2>
       <p>If you have any questions or would like to get in touch, feel free to reach out using the methods below:</p>
 
       <div className="contact-method">
@@ -20,7 +20,7 @@ function Contact() {
 
       <div className="contact-method">
         <span className="contact-label">Phone:</span>
-        <span>(585) 494-7522</span>
+        <a href="tel:585-494-7522">(585) 494-7522</a>
       </div>
     </div>
   );
