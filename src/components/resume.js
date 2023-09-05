@@ -6,7 +6,7 @@ import './resume.css';
 function Resume() {
   return (
     <div className="resume-container">
-      <iframe src="https://drive.google.com/file/d/1aFl2WHnCx_T01kS6Iy6bWpFARwaN5Dgw/preview" width="600" height="780" allow="autoplay" title="resume"></iframe>
+      <iframe src="https://drive.google.com/file/d/1Et9M5ZjyT4HDxjGlioutgIT1KOu3tKVs/preview" width="600" height="780" allow="autoplay" title="resume"></iframe>
     </div>
   );
 }
