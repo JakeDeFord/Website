@@ -13,7 +13,7 @@ body {
     /* Allow the container to grow and fill the available space */
     flex-grow: 1;
     /* Add some padding at the bottom to create space for the footer */
-    padding-bottom: 60px;
+    padding-bottom: 80px;
     /* Adjust this value based on your footer's height */
 }
 
