@@ -3,6 +3,7 @@ import React from 'react';
 import './footer.css';
 import githubIcon from '../images/github_button.png';
 import linkedinIcon from '../images/linkedin_button.png';
+import leetcodeIcon from '../images/LeetCode_logo_black.png';
 
 function Footer() {
     return (
@@ -14,6 +15,9 @@ function Footer() {
                 </a>
                 <a href="https://www.linkedin.com/in/jake-deford" target="_blank" rel="noopener noreferrer">
                     <img src={linkedinIcon} alt="LinkedIn" className="footer-button" />
+                </a>
+                <a href="https://leetcode.com/jakedeford/" target="_blank" rel="noopener noreferrer">
+                    <img src={leetcodeIcon} alt="LeetCode" className="footer-button" />
                 </a>
             </div>
         </footer>
