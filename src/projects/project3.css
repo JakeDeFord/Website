@@ -20,3 +20,20 @@
     max-width: 50%;
     height: auto;
 }
+
+
+/* Media queries for responsive design */
+
+/* Adjust padding for smaller screens */
+@media screen and (max-width: 768px) {
+    .project-content {
+        padding: 0 20px; /* Adjust padding for smaller screens */
+    }
+}
+
+/* Further adjust padding for even smaller screens */
+@media screen and (max-width: 480px) {
+    .project-content {
+        padding: 0 10px; /* Further adjust padding for even smaller screens */
+    }
+}
