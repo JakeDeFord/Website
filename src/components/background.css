@@ -1,0 +1,9 @@
+/* BackgroundContainer.css */
+.background-container {
+    background-color: #f0f0f0;
+    /* Set the background color */
+    min-height: 100vh;
+    /* Ensure the container covers the entire viewport height */
+    display: flex;
+    flex-direction: column;
+}

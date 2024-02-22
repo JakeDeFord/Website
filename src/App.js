@@ -8,19 +8,22 @@ import Contact from './components/contact';
 import Resume from './components/resume';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import BackgroundContainer from './components/background';
 
 function App() {
   return (
     <Router>
       <div>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <BackgroundContainer>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </BackgroundContainer>
         <Footer />
       </div>
     </Router>

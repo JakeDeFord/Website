@@ -1,4 +1,38 @@
 body {
   font-family: 'Font Name', sans-serif;
   background-color: #f0f0f0;
+  color: #333;
+  /* Dark text color for better readability */
+  line-height: 1.6;
+  /* Improved line spacing for readability */
+
+}
+
+a {
+  color: #007bff;
+  /* Blue color for links */
+  text-decoration: none;
+  /* Remove default underline */
+}
+
+a:hover {
+  text-decoration: underline;
+  /* Add underline on hover for links */
+}
+
+/* Additional styling for buttons */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  /* Darker shade on hover */
 }
