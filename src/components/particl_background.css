@@ -1,4 +1,6 @@
-/* BackgroundContainer.css */
+/* particle_background.css */
+
+/* Define keyframes for color shifting */
 @keyframes shiftColors {
     0% {
         background-color: #ff0000;
@@ -16,10 +18,8 @@
     }
 }
 
+/* Apply animation to the background */
 .background {
-    flex: 1;
-    position: relative;
-    background-color: transparent;
-    /* animation: shiftColors 10s infinite alternate; */
+    animation: shiftColors 10s infinite alternate;
     /* 10s duration, alternate direction, infinite looping */
 }

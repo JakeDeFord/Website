@@ -1,11 +1,12 @@
-// BackgroundContainer.js
+// background.js
 import React from 'react';
-import './background.css'; // Import CSS file for styling
+import ParticleBackground from './particle_background'; // Import ParticleBackground component
+import './background.css'; // Add your background container styles here
 
-function BackgroundContainer({ children }) {
-
+const BackgroundContainer = ({ children }) => {
     return (
-        <div className="background-container">
+        <div className="background">
+            <ParticleBackground /> {/* Render ParticleBackground component */}
             {children}
         </div>
     );

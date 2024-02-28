@@ -36,3 +36,17 @@ a:hover {
   background-color: #0056b3;
   /* Darker shade on hover */
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: transparent;
+  /* Ensure the container takes at least the height of the viewport */
+}
+
+.content-container {
+  flex: 1;
+  background-color: transparent;
+  /* This will make the content container expand to fill the remaining space */
+}

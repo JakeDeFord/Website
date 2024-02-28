@@ -8,14 +8,14 @@ import Contact from './components/contact';
 import Resume from './components/resume';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
-import BackgroundContainer from './components/background';
+import Background from './components/background';
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className="app-container">
         <Navbar />
-        <BackgroundContainer>
+        <Background className="background">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -23,7 +23,7 @@ function App() {
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-        </BackgroundContainer>
+        </Background>
         <Footer />
       </div>
     </Router>
