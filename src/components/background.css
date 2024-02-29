@@ -1,25 +1,17 @@
-/* BackgroundContainer.css */
-@keyframes shiftColors {
-    0% {
-        background-color: #ff0000;
-        /* Start color */
-    }
-
-    50% {
-        background-color: #00ff00;
-        /* Middle color */
-    }
-
-    100% {
-        background-color: #0000ff;
-        /* End color */
-    }
-}
-
 .background {
     flex: 1;
     position: relative;
     background-color: transparent;
-    /* animation: shiftColors 10s infinite alternate; */
-    /* 10s duration, alternate direction, infinite looping */
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensure the video covers the entire container */
+    z-index: -1;
+    /* Ensure the video is behind other content */
 }
