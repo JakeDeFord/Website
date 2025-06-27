@@ -1,30 +1,76 @@
 .about-me-container {
-    display: flex;
+  display: flex;
+  flex-direction: row; /* Default for desktop: image left, text right */
+  align-items: flex-start; /* Align items to the top */
+  max-width: 1000px; /* Max width for the component */
+  margin: 0 auto; /* Center the component */
+  padding: var(--spacing-unit);
+  gap: calc(var(--spacing-unit) * 2); /* Space between image and text containers */
+  background-color: var(--primary-light); /* Ensuring light background for text */
+  border-radius: var(--border-radius);
+  /* box-shadow: 0 4px 15px rgba(0,0,0,0.1); */ /* Optional: if you want a card effect */
 }
 
 .image-container {
-    margin-right: 20px;
+  flex-basis: 300px; /* Fixed width for the image container */
+  flex-shrink: 0; /* Prevent shrinking */
+  margin-right: 0; /* Replaced by gap */
+}
+
+.image-container img.headshot { /* Specific class for headshot */
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius); /* Softer corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Subtle shadow */
 }
 
 .text-container {
-    text-align: center;
-    /* Align text to the left */
+  flex-grow: 1; /* Allow text container to take remaining space */
+  text-align: left; /* Align text to the left for readability */
+  font-family: var(--font-body);
+  color: var(--text-color-dark);
 }
 
-@media(max-width: 768px) {
-    .about-me-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 20px;
-    }
+.text-container p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--spacing-unit);
+}
 
-    .image-container {
-        margin-right: 20px;
-    }
+.text-container img.dog-tax { /* Specific class for dog image */
+  max-width: 75%; /* Control size */
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-top: var(--spacing-unit);
+  display: block; /* To allow margin auto if needed, or just for consistency */
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.1); */ /* Optional shadow */
+}
 
-    .text-container {
-        text-align: center;
-        /* Align text to the left */
-    }
+/* Mobile version styles */
+@media (max-width: 768px) {
+  .about-me-container {
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center items in column layout */
+    margin: var(--spacing-unit); /* Adjust margin for mobile */
+    padding: var(--spacing-unit);
+    gap: var(--spacing-unit); /* Reduce gap for mobile */
+  }
+
+  .image-container {
+    margin-right: 0; /* Remove margin as it's stacked */
+    margin-bottom: var(--spacing-unit); /* Add space below image */
+    flex-basis: auto; /* Allow image container to size naturally */
+    width: 70%; /* Control image width on mobile */
+    max-width: 250px; /* Max width for headshot on mobile */
+  }
+
+  .text-container {
+    text-align: center; /* Center text on mobile for a compact look */
+  }
+
+  .text-container img.dog-tax {
+    max-width: 80%; /* Adjust dog image size for mobile */
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

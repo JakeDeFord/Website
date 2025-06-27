@@ -5,7 +5,7 @@ import './about.css'
 
 function About() {
     return (
-        <div className="main-container">
+        <div className="about-page-container"> {/* Changed class name */}
             <h2>About Me</h2>
             <AboutMe />
         </div>

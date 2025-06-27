@@ -1,38 +1,37 @@
 /* footer.css */
-
 .footer {
-    background-color: #333;
-    color: #fff;
-    opacity: 1;
-    text-align: center;
-    padding: 10px;
-    /* Add necessary styling to make the footer stay at the bottom */
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    /* Set a higher z-index value to ensure it's displayed above other elements */
+  background-color: var(--primary-dark);
+  color: var(--text-color-light);
+  text-align: center;
+  padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit); /* Increased padding */
+  /* bottom: 0; */ /* Removed, as flex layout in App.js handles positioning */
+  /* left: 0; */ /* Removed */
+  /* width: 100%; */ /* Removed, let flexbox handle width */
+  z-index: 999; /* Ensure it's above background but below sticky navbar if navbar z-index is higher */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow on top */
+  font-family: var(--font-body);
 }
 
 .footer p {
-    margin-bottom: 5px;
-    margin: 0;
-    /* Add some spacing between the text and buttons */
+  margin: 0 0 calc(var(--spacing-unit) * 0.75) 0; /* Add some spacing below the text */
+  font-size: 0.9rem;
 }
 
 .footer-buttons {
-    display: flex;
-    justify-content: center;
-    /* Center the buttons horizontally */
-    margin-top: 5px;
-    /* Add some spacing between the text and buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Align items vertically */
 }
 
 .footer-button {
-    width: 30px;
-    /* Adjust the width and height as needed */
-    height: 30px;
-    margin: 0 5px;
-    /* Add some spacing between the buttons */
-    cursor: pointer;
+  width: 28px; /* Slightly adjusted size */
+  height: 28px; /* Slightly adjusted size */
+  margin: 0 calc(var(--spacing-unit) * 0.5); /* Use spacing unit for margins */
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Keep icons white if they are dark by default */
+}
+
+.footer-button:hover {
+  opacity: 0.8; /* Slight hover effect */
 }

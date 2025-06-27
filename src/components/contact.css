@@ -1,27 +1,67 @@
 /* contact.css */
 .contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+  max-width: 700px; /* Slightly wider for better spacing */
+  margin: calc(var(--spacing-unit) * 2) auto;
+  padding: calc(var(--spacing-unit) * 2);
+  text-align: center;
+  background-color: #ffffff; /* White card background for contact form area */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: var(--text-color-dark);
+}
+
+.contact-container h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-unit);
+  color: var(--text-color-dark);
+}
+
+.contact-container p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
 .contact-method {
-    margin-top: 15px;
+  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Increased spacing between methods */
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .contact-label {
-    font-weight: bold;
+  font-weight: bold;
+  font-family: var(--font-body); /* Ensure consistent font */
+  margin-right: calc(var(--spacing-unit) * 0.5); /* Space after label */
 }
 
-/* Style the links within the Contact section */
 .contact-container a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #007bff;
-    /* Change this color as needed */
+  font-family: var(--font-body); /* Ensure consistent font */
+  color: var(--accent-color);
+  text-decoration: none;
+  margin: 0 calc(var(--spacing-unit) * 0.5); /* Spacing around links if multiple are inline */
+  transition: color 0.3s ease;
 }
 
-span {
-    margin-right: 10px;
+.contact-container a:hover {
+  color: var(--accent-color-darker);
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-container {
+    margin: var(--spacing-unit) auto;
+    padding: var(--spacing-unit) * 1.5;
+  }
+  .contact-container h2 {
+    font-size: 2rem;
+  }
+  .contact-container p {
+    font-size: 1rem;
+  }
+  .contact-method {
+    font-size: 0.95rem;
+  }
 }

@@ -7,11 +7,13 @@ import './projects.css';
 
 function Projects() {
     return (
-        <div className="projects-container"> {/* Add the projects-container class */}
+        <div className="projects-container">
             <h2>My Projects</h2>
-            <Project1 />
-            <Project2 />
-            <Project3 />
+            <div className="projects-grid"> {/* Added projects-grid wrapper */}
+                <Project1 />
+                <Project2 />
+                <Project3 />
+            </div>
         </div>
     );
 }

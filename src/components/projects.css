@@ -1,48 +1,97 @@
 /* projects.css */
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-}
-
 .projects-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Allow the container to grow and fill the available space */
-    flex-grow: 1;
-    /* Add some padding at the bottom to create space for the footer */
-    padding-bottom: 80px;
-    /* Adjust this value based on your footer's height */
+  padding: calc(var(--spacing-unit) * 2);
+  text-align: center; /* Center the main heading */
+  background-color: var(--primary-light); /* Ensure light background */
 }
 
-.project-content {
-    text-align: center;
+.projects-container > h2 { /* Direct child h2 */
+  font-family: var(--font-heading);
+  color: var(--text-color-dark);
+  font-size: 2.5rem;
+  margin-bottom: calc(var(--spacing-unit) * 2);
 }
 
-.project-image-container {
-    margin: 20px 0;
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(var(--spacing-unit) * 2);
+  text-align: left; /* Reset text-align for grid items */
 }
 
-/* Mobile version styles */
+.project-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: calc(var(--spacing-unit) * 1.5);
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* For equal height cards in a row */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.project-card h3 {
+  font-family: var(--font-heading);
+  color: var(--text-color-dark);
+  font-size: 1.5rem;
+  margin-top: 0; /* Remove default top margin */
+  margin-bottom: var(--spacing-unit);
+}
+
+.project-card p {
+  font-family: var(--font-body);
+  color: var(--text-color-dark);
+  line-height: 1.6;
+  flex-grow: 1; /* Allows description to take available space, pushing links to bottom */
+  margin-bottom: var(--spacing-unit);
+  font-size: 0.95rem;
+}
+
+.project-card .project-image-container {
+  margin-bottom: var(--spacing-unit);
+  text-align: center; /* Center image within its container */
+}
+
+.project-card .project-image-container img {
+  max-width: 100%;
+  height: auto;
+  max-height: 200px; /* Max height for project images to keep cards balanced */
+  object-fit: contain; /* Or 'cover', depending on desired image scaling */
+  border-radius: calc(var(--border-radius) - 2px); /* Slightly smaller radius for inner elements */
+}
+
+.project-card a {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block; /* Allows margin/padding */
+  margin-top: auto; /* Pushes link to the bottom if paragraph above uses flex-grow */
+}
+
+.project-card a:hover {
+  color: var(--accent-color-darker);
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for the grid and cards */
 @media (max-width: 768px) {
-    .projects-container {
-        /* Adjust container styling for mobile */
-        width: 100%;
-        /* Remove flex-grow to let the height be determined by content on mobile */
-        flex-grow: initial;
-        /* Adjust padding for mobile to create space for the footer */
-        margin-bottom: 60px;
-    }
-
-    .project-content {
-        /* Adjust text alignment and font size for mobile */
-        text-align: center;
-    }
-
-    .project-image-container {
-        /* Adjust image container margins for mobile */
-        margin: 10px 0;
-    }
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+    gap: var(--spacing-unit);
+  }
+  .projects-container > h2 {
+    font-size: 2rem;
+  }
+  .project-card h3 {
+    font-size: 1.3rem;
+  }
+  .project-card p {
+    font-size: 0.9rem;
+  }
 }
