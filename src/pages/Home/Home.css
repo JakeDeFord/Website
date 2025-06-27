@@ -1,46 +1,80 @@
-/* home.css */
+/* Home.css */
+.home-page-wrapper { /* New wrapper to ensure full height for centering content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center .home-container */
+  align-items: center; /* Horizontally center .home-container */
+  min-height: calc(100vh - 120px); /* Adjust based on approx Navbar + Footer height */
+  /* This assumes .background (parent) fills the viewport correctly. */
+  /* Padding can be added here if needed instead of margin on .home-container */
+}
+
 .home-container {
   max-width: 800px;
-  margin: calc(var(--spacing-unit) * 2) auto; /* Vertical and horizontal centering/spacing */
-  padding: calc(var(--spacing-unit) * 2);
+  /* margin: calc(var(--spacing-unit) * 4) auto; */ /* Adjusted margin, or rely on flex centering from wrapper */
+  margin: var(--spacing-unit); /* Add some margin for spacing from viewport edges on small screens */
+  padding: calc(var(--spacing-unit) * 2.5); /* Increased padding */
   text-align: center;
-  color: var(--text-color-light); /* White text for video background */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay for readability */
+  color: var(--text-color-dark); /* Changed to dark text */
+  background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Adjusted shadow for more depth */
+  transition: transform 0.3s ease-out; /* Add a subtle transition */
 }
+
+/* Optional: Add a subtle hover effect if desired */
+/* .home-container:hover {
+  transform: translateY(-5px);
+} */
 
 .home-container h2 {
   font-family: var(--font-heading);
-  font-size: 2.5rem; /* Larger heading */
-  margin-bottom: var(--spacing-unit);
-  color: var(--text-color-light); /* Ensure heading is also light */
-  /* text-shadow: 1px 1px 3px rgba(0,0,0,0.7); */ /* Text shadow for readability, adjust as needed */
+  font-size: 3rem; /* Made heading larger */
+  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Adjusted margin */
+  color: var(--text-color-dark); /* Changed to dark text */
+  font-weight: 700; /* Bolder heading */
 }
 
 .home-container p {
   font-family: var(--font-body);
-  font-size: 1.1rem; /* Slightly larger body text */
-  line-height: 1.8; /* Improved line height */
-  text-align: center; /* Center align paragraph text */
+  font-size: 1.2rem; /* Made body text slightly larger */
+  line-height: 1.7; /* Adjusted line height for new font size */
+  text-align: center;
   margin-bottom: calc(var(--spacing-unit) * 1.5);
-  padding: 0 var(--spacing-unit); /* Padding for paragraphs */
-  color: var(--text-color-light); /* Ensure paragraph text is also light */
-  /* text-shadow: 1px 1px 2px rgba(0,0,0,0.5); */ /* Text shadow for readability */
+  padding: 0 var(--spacing-unit);
+  color: var(--text-color-dark); /* Changed to dark text */
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .home-page-wrapper {
+    min-height: calc(100vh - 100px); /* Adjust for potentially smaller nav/footer on mobile */
+    padding-top: var(--spacing-unit); /* Add some padding at the top */
+    padding-bottom: var(--spacing-unit);
+  }
   .home-container {
-    margin: var(--spacing-unit) auto;
-    padding: var(--spacing-unit);
+    margin: var(--spacing-unit); /* Ensure some margin */
+    padding: calc(var(--spacing-unit) * 2);
+    width: auto; /* Allow it to shrink with margins */
   }
 
   .home-container h2 {
-    font-size: 2rem;
+    font-size: 2.2rem; /* Adjusted for mobile */
   }
 
   .home-container p {
+    font-size: 1.1rem; /* Adjusted for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container h2 {
+    font-size: 1.8rem;
+  }
+  .home-container p {
     font-size: 1rem;
+  }
+  .home-container {
+    padding: var(--spacing-unit);
   }
 }
