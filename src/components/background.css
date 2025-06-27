@@ -1,14 +1,12 @@
 .background {
     flex: 1;
-    position: relative; /* Keep for potential future absolutely positioned children if any */
-    /* background-color: transparent; */ /* Replaced by gradient */
-    background-image: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-    /* Ensure it fills the designated area */
-    display: flex; /* To allow children to be centered or further styled if needed */
-    flex-direction: column; /* Stack children vertically */
+    position: relative;
+    background-color: var(--primary-light); /* Reverted to primary light color */
+    display: flex;
+    flex-direction: column;
 }
 
-/* .background-video class is no longer used, so it can be removed or commented out */
+/* Ensure .background-video styles remain commented out or removed */
 /*
 .background-video {
     position: absolute;

@@ -1,80 +1,74 @@
 /* Home.css */
-.home-page-wrapper { /* New wrapper to ensure full height for centering content */
+.home-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically center .home-container */
-  align-items: center; /* Horizontally center .home-container */
-  min-height: calc(100vh - 120px); /* Adjust based on approx Navbar + Footer height */
-  /* This assumes .background (parent) fills the viewport correctly. */
-  /* Padding can be added here if needed instead of margin on .home-container */
-}
-
-.home-container {
-  max-width: 800px;
-  /* margin: calc(var(--spacing-unit) * 4) auto; */ /* Adjusted margin, or rely on flex centering from wrapper */
-  margin: var(--spacing-unit); /* Add some margin for spacing from viewport edges on small screens */
-  padding: calc(var(--spacing-unit) * 2.5); /* Increased padding */
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* Approximate height: viewport - (nav + footer) */
+  /* Assumes .background (parent of Home.js's output) has appropriate background color, e.g. var(--primary-light) */
+  padding: calc(var(--spacing-unit) * 3); /* More padding for whitespace */
   text-align: center;
-  color: var(--text-color-dark); /* Changed to dark text */
-  background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white background */
-  border-radius: var(--border-radius);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Adjusted shadow for more depth */
-  transition: transform 0.3s ease-out; /* Add a subtle transition */
+  color: var(--text-color-dark);
+  overflow: hidden; /* Prevent scrollbars if any hover effects slightly increase size */
 }
-
-/* Optional: Add a subtle hover effect if desired */
-/* .home-container:hover {
-  transform: translateY(-5px);
-} */
 
 .home-container h2 {
   font-family: var(--font-heading);
-  font-size: 3rem; /* Made heading larger */
-  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Adjusted margin */
-  color: var(--text-color-dark); /* Changed to dark text */
-  font-weight: 700; /* Bolder heading */
+  /* Responsive font size: min, preferred (viewport-based), max */
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 800; /* Bolder for impact */
+  color: var(--text-color-dark);
+  line-height: 1.15;
+  letter-spacing: -0.02em; /* Subtle tightening */
+  margin-bottom: calc(var(--spacing-unit) * 2); /* More space after headline */
+  /* CSS Transition for hover effects */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.home-container h2:hover {
+  transform: scale(1.03);
+  color: var(--accent-color);
 }
 
 .home-container p {
   font-family: var(--font-body);
-  font-size: 1.2rem; /* Made body text slightly larger */
-  line-height: 1.7; /* Adjusted line height for new font size */
+  font-size: clamp(1.1rem, 3vw, 1.5rem); /* Responsive font size */
+  line-height: 1.7;
   text-align: center;
   margin-bottom: calc(var(--spacing-unit) * 1.5);
-  padding: 0 var(--spacing-unit);
-  color: var(--text-color-dark); /* Changed to dark text */
+  max-width: 55ch; /* Slightly narrower for better readability at larger font sizes */
+  color: var(--text-color-dark);
+  /* CSS Transition for hover effects */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Responsive adjustments */
+.home-container p:hover {
+  transform: translateY(-3px) scale(1.01); /* Slight lift and subtle scale */
+  color: var(--accent-color); /* Or a slightly darker shade of text-color-dark */
+}
+
+/* Specific styling for the first paragraph if needed for hierarchy */
+.home-container p:first-of-type {
+  /* font-size: clamp(1.2rem, 3.5vw, 1.75rem); */ /* Example: make first paragraph slightly larger */
+  /* color: #555; */ /* Example: slightly different color */
+}
+
+
+/* Responsive adjustments (clamp handles font sizes, mostly for container padding/min-height) */
 @media (max-width: 768px) {
-  .home-page-wrapper {
-    min-height: calc(100vh - 100px); /* Adjust for potentially smaller nav/footer on mobile */
-    padding-top: var(--spacing-unit); /* Add some padding at the top */
-    padding-bottom: var(--spacing-unit);
-  }
   .home-container {
-    margin: var(--spacing-unit); /* Ensure some margin */
+    min-height: calc(100vh - 100px);
     padding: calc(var(--spacing-unit) * 2);
-    width: auto; /* Allow it to shrink with margins */
   }
-
+  /* Clamp will adjust font sizes, but we can fine-tune margins if needed */
   .home-container h2 {
-    font-size: 2.2rem; /* Adjusted for mobile */
-  }
-
-  .home-container p {
-    font-size: 1.1rem; /* Adjusted for mobile */
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
   }
 }
 
 @media (max-width: 480px) {
-  .home-container h2 {
-    font-size: 1.8rem;
-  }
-  .home-container p {
-    font-size: 1rem;
-  }
   .home-container {
     padding: var(--spacing-unit);
   }
+   /* clamp values should handle small screens well, minimal overrides needed */
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import './Home.css'; // Corrected import to match CSS filename
+import './Home.css';
 
 function Home() {
   return (
-    <div className="home-page-wrapper"> {/* Added wrapper div */}
-      <div className="home-container">
+    // <div className="home-page-wrapper"> // This wrapper is removed
+      <div className="home-container"> {/* This will be the main flex container for centering */}
         <h2>Welcome to My Portfolio</h2>
         <p>
           Hi there! I'm Jake, a passionate computer engineer with a love for coding and technology.
@@ -15,7 +15,7 @@ function Home() {
           I'm always excited to collaborate on new projects and connect with fellow developers.
         </p>
       </div>
-    </div>
+    // </div>
   );
 }
 
