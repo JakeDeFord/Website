@@ -1,7 +1,7 @@
 import React from 'react';
-import './contact.css';
+import './ContactPage.css'; // Adjusted path
 
-function Contact() {
+function ContactPage() { // Renamed component
   return (
     <div className="contact-container">
       <h2>Contact Me</h2>
@@ -26,4 +26,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default ContactPage;

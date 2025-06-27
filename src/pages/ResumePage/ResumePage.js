@@ -1,13 +1,13 @@
 import React from 'react';
-import './resume.css';
+import './ResumePage.css'; // Adjusted path
 
 // const resumePDF = process.env.PUBLIC_URL + '/resume.pdf'; // This can be used if serving PDF locally
 
-function Resume() {
+function ResumePage() { // Renamed component
   return (
-    <div className="resume-page-container"> {/* Changed class to match CSS */}
+    <div className="resume-page-container">
       <h2>My Resume</h2>
-      <div className="resume-iframe-container"> {/* Added a wrapper for better control */}
+      <div className="resume-iframe-container">
         <iframe
           src="https://drive.google.com/file/d/1Et9M5ZjyT4HDxjGlioutgIT1KOu3tKVs/preview"
           className="resume-pdf" // Class for the iframe itself
@@ -19,4 +19,4 @@ function Resume() {
   );
 }
 
-export default Resume;
+export default ResumePage;

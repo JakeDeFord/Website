@@ -1,10 +1,10 @@
-/* contact.css */
+/* ContactPage.css */
 .contact-container {
-  max-width: 700px; /* Slightly wider for better spacing */
+  max-width: 700px;
   margin: calc(var(--spacing-unit) * 2) auto;
   padding: calc(var(--spacing-unit) * 2);
   text-align: center;
-  background-color: #ffffff; /* White card background for contact form area */
+  background-color: #ffffff;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   color: var(--text-color-dark);
@@ -25,22 +25,22 @@
 }
 
 .contact-method {
-  margin-bottom: calc(var(--spacing-unit) * 1.5); /* Increased spacing between methods */
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
   font-size: 1rem;
   line-height: 1.6;
 }
 
 .contact-label {
   font-weight: bold;
-  font-family: var(--font-body); /* Ensure consistent font */
-  margin-right: calc(var(--spacing-unit) * 0.5); /* Space after label */
+  font-family: var(--font-body);
+  margin-right: calc(var(--spacing-unit) * 0.5);
 }
 
 .contact-container a {
-  font-family: var(--font-body); /* Ensure consistent font */
+  font-family: var(--font-body);
   color: var(--accent-color);
   text-decoration: none;
-  margin: 0 calc(var(--spacing-unit) * 0.5); /* Spacing around links if multiple are inline */
+  margin: 0 calc(var(--spacing-unit) * 0.5);
   transition: color 0.3s ease;
 }
 

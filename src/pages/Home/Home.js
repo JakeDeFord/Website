@@ -1,7 +1,7 @@
 import React from 'react';
-import './home.css';
+import './Home.css'; // Corrected import to match CSS filename
 
-function Home() {
+function Home() { // Component name is Home, file is Home.js. This is fine.
   return (
     <div className="home-container">
       <h2>Welcome to My Portfolio</h2>
