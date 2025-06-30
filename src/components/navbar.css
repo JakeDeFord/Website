@@ -1,5 +1,6 @@
 /* navbar.css */
-nav.navbar { /* Changed from nav to nav.navbar for more specificity */
+nav.navbar {
+  /* Changed from nav to nav.navbar for more specificity */
   background-color: var(--primary-dark);
   color: var(--text-color-light);
   display: flex;
@@ -12,7 +13,8 @@ nav.navbar { /* Changed from nav to nav.navbar for more specificity */
   z-index: 1000; /* Ensure it's above other content */
 }
 
-nav.navbar .header h2 { /* Target h2 within .header specifically */
+nav.navbar .header h2 {
+  /* Target h2 within .header specifically */
   font-family: var(--font-heading);
   color: var(--text-color-light);
   margin: 0;
@@ -44,7 +46,8 @@ nav.navbar a {
 }
 
 nav.navbar a:hover,
-nav.navbar a.active { /* Style for active link */
+nav.navbar a.active {
+  /* Style for active link */
   background-color: var(--accent-color);
   color: var(--text-color-light);
   text-decoration: none;
@@ -76,15 +79,17 @@ nav.navbar a.active { /* Style for active link */
     display: block; /* Show menu icon on mobile */
   }
 
-  nav.navbar ul.regular-menu { /* Target .regular-menu specifically */
+  nav.navbar ul.regular-menu {
+    /* Target .regular-menu specifically */
     display: none; /* Hide regular menu by default on mobile */
     flex-direction: column;
     width: 100%;
     align-items: flex-start; /* Align items to the start */
   }
 
-  nav.navbar ul.dropdown-menu { /* Target .dropdown-menu specifically */
-    display: flex; /* This will be controlled by JS (isMenuOpen) */
+  nav.navbar ul.dropdown-menu {
+    /* Target .dropdown-menu specifically */
+    display: none; /* <<<< CORRECTED: Hide by default on mobile */
     flex-direction: column;
     width: 100%;
     align-items: flex-start; /* Align items to the start */
@@ -92,7 +97,9 @@ nav.navbar a.active { /* Style for active link */
 
   nav.navbar ul li {
     margin-right: 0;
-    margin-bottom: calc(var(--spacing-unit) * 0.5); /* Space between items in column */
+    margin-bottom: calc(
+      var(--spacing-unit) * 0.5
+    ); /* Space between items in column */
     width: 100%; /* Make li take full width */
   }
 
@@ -104,8 +111,8 @@ nav.navbar a.active { /* Style for active link */
   }
 
   /* This class will be toggled by JS to show the menu */
-  nav.navbar ul.regular-menu.open,
+  /* nav.navbar ul.regular-menu.open, -- Removed as .regular-menu is display:none on mobile */
   nav.navbar ul.dropdown-menu.open {
-    display: flex;
+    display: flex; /* This makes it visible */
   }
 }
