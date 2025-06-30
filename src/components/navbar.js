@@ -45,15 +45,24 @@ function Navbar() {
       <div className="header">
         <h2>Jake DeFord</h2>
         {isMobile && ( // Show menu icon only on mobile
-          <div className="menu-icon" onClick={toggleMenu}>
+          <button
+            className="menu-button"
+            onClick={toggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label="Toggle navigation menu"
+          >
             &#9776; {/* Hamburger icon */}
-          </div>
+          </button>
         )}
       </div>
 
       {/* Mobile Menu: shown if isMobile and isMenuOpen */}
       {isMobile && (
-        <ul className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
+        <ul
+          id="mobile-menu"
+          className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}
+        >
           <li>{renderNavLink("/", "Home")}</li>
           <li>{renderNavLink("/about", "About")}</li>
           <li>{renderNavLink("/projects", "Projects")}</li>
