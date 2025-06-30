@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom'; // Changed Link to NavLink
 import './navbar.css';
 
 function Navbar() {
-  const isMobile = navigator.maxTouchPoints > 0;
+  // State to track mobile status
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Effect to update isMobile on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      // Close menu if resizing to desktop view
+      if (window.innerWidth > 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -14,65 +29,47 @@ function Navbar() {
     setIsMenuOpen(false);
   };
 
+  // Helper function to render NavLink, applying active class
+  const renderNavLink = (to, text) => (
+    <NavLink
+      to={to}
+      onClick={closeMenu} // Close menu on link click for mobile
+      className={({ isActive }) => (isActive ? 'active' : '')}
+    >
+      {text}
+    </NavLink>
+  );
+
   return (
-    <nav className="navbar">
-      {/* Header and menu icon for mobile */}
+    <nav className="navbar"> {/* Ensure this class matches CSS */}
       <div className="header">
         <h2>Jake DeFord</h2>
-        {isMobile && (
-          <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
-            &#9776;
+        {isMobile && ( // Show menu icon only on mobile
+          <div className="menu-icon" onClick={toggleMenu}>
+            &#9776; {/* Hamburger icon */}
           </div>
         )}
       </div>
 
-      {/* Dropdown menu on mobile when the menu is active */}
-      {isMobile && isMenuOpen ? (
-        <ul className="dropdown-menu">
-          <li>
-            <Link to="/" onClick={closeMenu}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/about" onClick={closeMenu}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link to="/projects" onClick={closeMenu}>
-              Projects
-            </Link>
-          </li>
-          <li>
-            <Link to="/resume" onClick={closeMenu}>
-              Resume
-            </Link>
-          </li>
-          <li>
-            <Link to="/contact" onClick={closeMenu}>
-              Contact
-            </Link>
-          </li>
+      {/* Mobile Menu: shown if isMobile and isMenuOpen */}
+      {isMobile && (
+        <ul className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}>
+          <li>{renderNavLink("/", "Home")}</li>
+          <li>{renderNavLink("/about", "About")}</li>
+          <li>{renderNavLink("/projects", "Projects")}</li>
+          <li>{renderNavLink("/resume", "Resume")}</li>
+          <li>{renderNavLink("/contact", "Contact")}</li>
         </ul>
-      ) : (
-        // Regular menu for larger screens
+      )}
+
+      {/* Desktop Menu: shown if not isMobile */}
+      {!isMobile && (
         <ul className="regular-menu">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/projects">Projects</Link>
-          </li>
-          <li>
-            <Link to="/resume">Resume</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
+          <li>{renderNavLink("/", "Home")}</li>
+          <li>{renderNavLink("/about", "About")}</li>
+          <li>{renderNavLink("/projects", "Projects")}</li>
+          <li>{renderNavLink("/resume", "Resume")}</li>
+          <li>{renderNavLink("/contact", "Contact")}</li>
         </ul>
       )}
     </nav>

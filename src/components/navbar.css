@@ -1,71 +1,118 @@
 /* navbar.css */
-nav {
-  background-color: #333;
-  color: #fff;
+nav.navbar {
+  /* Changed from nav to nav.navbar for more specificity */
+  background-color: var(--primary-dark);
+  color: var(--text-color-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: sticky; /* Makes navbar sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
-ul {
+nav.navbar .header h2 {
+  /* Target h2 within .header specifically */
+  font-family: var(--font-heading);
+  color: var(--text-color-light);
+  margin: 0;
+  font-size: 1.5rem; /* Example size, adjust as needed */
+}
+
+nav.navbar ul {
   display: flex;
   list-style: none;
   padding: 0;
+  margin: 0; /* Reset margin for ul */
 }
 
-li {
-  margin-right: 10px;
-  color: #ffffff;
+nav.navbar li {
+  margin-right: var(--spacing-unit); /* Consistent spacing */
 }
 
-a {
-  color: #fff;
+nav.navbar li:last-child {
+  margin-right: 0; /* No margin for the last item */
+}
+
+nav.navbar a {
+  color: var(--text-color-light);
+  text-decoration: none;
+  font-family: var(--font-body);
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav.navbar a:hover,
+nav.navbar a.active {
+  /* Style for active link */
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
   text-decoration: none;
 }
 
 /* Mobile version styles */
+.menu-icon {
+  display: none; /* Hidden by default, shown in media query */
+  font-size: 1.5rem; /* Adjusted size */
+  cursor: pointer;
+  color: var(--text-color-light);
+}
+
 @media (max-width: 768px) {
-  nav {
+  nav.navbar {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start; /* Align items to the start for mobile */
   }
 
   .header {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
     justify-content: space-between;
     width: 100%;
-  }
-
-  .header h2 {
-    margin: 0;
+    margin-bottom: var(--spacing-unit);
   }
 
   .menu-icon {
-    font-size: 20px;
-    cursor: pointer;
+    display: block; /* Show menu icon on mobile */
   }
 
-  ul {
-    display: none;
+  nav.navbar ul.regular-menu {
+    /* Target .regular-menu specifically */
+    display: none; /* Hide regular menu by default on mobile */
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+    align-items: flex-start; /* Align items to the start */
   }
 
-  .menu-icon.open {
-    display: block;
-  }
-
-  .dropdown-menu {
-    display: flex;
+  nav.navbar ul.dropdown-menu {
+    /* Target .dropdown-menu specifically */
+    display: none; /* <<<< CORRECTED: Hide by default on mobile */
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+    align-items: flex-start; /* Align items to the start */
   }
 
-  /* Add margin between each item in the dropdown menu */
-  .dropdown-menu li {
-    margin-bottom: 10px;
+  nav.navbar ul li {
+    margin-right: 0;
+    margin-bottom: calc(
+      var(--spacing-unit) * 0.5
+    ); /* Space between items in column */
+    width: 100%; /* Make li take full width */
+  }
+
+  nav.navbar ul li a {
+    display: block; /* Make links take full width for easier tapping */
+    padding: var(--spacing-unit); /* Larger touch target */
+    width: 100%;
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  /* This class will be toggled by JS to show the menu */
+  /* nav.navbar ul.regular-menu.open, -- Removed as .regular-menu is display:none on mobile */
+  nav.navbar ul.dropdown-menu.open {
+    display: flex; /* This makes it visible */
   }
 }

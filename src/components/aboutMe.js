@@ -1,12 +1,13 @@
 // AboutMe.js
 import React from 'react';
 import dog_pic from '../images/dog_tax.jpg'
+import './aboutMe.css'; // Ensure CSS is imported
 
 function AboutMe() {
     return (
         <div className="about-me-container">
             <div className="image-container">
-                <img src={process.env.PUBLIC_URL + '/headshot.jpg'} alt="About Me" width="300" height="300" />
+                <img src={process.env.PUBLIC_URL + '/headshot.jpg'} alt="Jake DeFord headshot" className="headshot" width="300" height="300" />
             </div >
 
             <div className="text-container">
@@ -18,7 +19,7 @@ function AboutMe() {
                     Beyond my technical pursuits, I enjoy exploring new technologies and continuously expanding my skillset.
                     I just adopted a puppy named Daisy. Dog tax below.
                 </p>
-                <img src={dog_pic} alt="About Me" width="75%" />
+                <img src={dog_pic} alt="Daisy the puppy" className="dog-tax" width="75%" />
             </div>
         </div >
     );

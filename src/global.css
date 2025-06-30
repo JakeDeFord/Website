@@ -1,52 +1,70 @@
-body {
-  font-family: 'Font Name', sans-serif;
-  background-color: #f0f0f0;
-  color: #333;
-  /* Dark text color for better readability */
-  line-height: 1.6;
-  /* Improved line spacing for readability */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
 
+:root {
+  --primary-light: #f8f9fa;
+  --primary-dark: #343a40;
+  --accent-color: #20c997;
+  --accent-color-darker: #1aa07e;
+  --text-color-light: #ffffff;
+  --text-color-dark: #333333;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+  --spacing-unit: 1rem;
+  --border-radius: 5px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--primary-light);
+  color: var(--text-color-dark);
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-  color: #007bff;
-  /* Blue color for links */
+  color: var(--accent-color);
   text-decoration: none;
-  /* Remove default underline */
+  transition: color 0.3s ease;
 }
 
 a:hover {
+  color: var(--accent-color-darker);
   text-decoration: underline;
-  /* Add underline on hover for links */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-color-dark); /* Default heading color */
 }
 
 /* Additional styling for buttons */
 .button {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: var(--font-body);
+  font-weight: bold;
 }
 
 .button:hover {
-  background-color: #0056b3;
-  /* Darker shade on hover */
+  background-color: var(--accent-color-darker);
 }
 
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: transparent;
-  /* Ensure the container takes at least the height of the viewport */
+  background-color: transparent; /* This will be behind the video or page content */
 }
 
 .content-container {
   flex: 1;
-  background-color: transparent;
-  /* This will make the content container expand to fill the remaining space */
+  background-color: transparent; /* Allows video background to show through */
+  padding: var(--spacing-unit); /* Add some default padding */
 }

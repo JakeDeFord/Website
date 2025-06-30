@@ -1,0 +1,74 @@
+/* Home.css */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* Approximate height: viewport - (nav + footer) */
+  /* Assumes .background (parent of Home.js's output) has appropriate background color, e.g. var(--primary-light) */
+  padding: calc(var(--spacing-unit) * 3); /* More padding for whitespace */
+  text-align: center;
+  color: var(--text-color-dark);
+  overflow: hidden; /* Prevent scrollbars if any hover effects slightly increase size */
+}
+
+.home-container h2 {
+  font-family: var(--font-heading);
+  /* Responsive font size: min, preferred (viewport-based), max */
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 800; /* Bolder for impact */
+  color: var(--text-color-dark);
+  line-height: 1.15;
+  letter-spacing: -0.02em; /* Subtle tightening */
+  margin-bottom: calc(var(--spacing-unit) * 2); /* More space after headline */
+  /* CSS Transition for hover effects */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.home-container h2:hover {
+  transform: scale(1.03);
+  color: var(--accent-color);
+}
+
+.home-container p {
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 3vw, 1.5rem); /* Responsive font size */
+  line-height: 1.7;
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  max-width: 55ch; /* Slightly narrower for better readability at larger font sizes */
+  color: var(--text-color-dark);
+  /* CSS Transition for hover effects */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.home-container p:hover {
+  transform: translateY(-3px) scale(1.01); /* Slight lift and subtle scale */
+  color: var(--accent-color); /* Or a slightly darker shade of text-color-dark */
+}
+
+/* Specific styling for the first paragraph if needed for hierarchy */
+.home-container p:first-of-type {
+  /* font-size: clamp(1.2rem, 3.5vw, 1.75rem); */ /* Example: make first paragraph slightly larger */
+  /* color: #555; */ /* Example: slightly different color */
+}
+
+
+/* Responsive adjustments (clamp handles font sizes, mostly for container padding/min-height) */
+@media (max-width: 768px) {
+  .home-container {
+    min-height: calc(100vh - 100px);
+    padding: calc(var(--spacing-unit) * 2);
+  }
+  /* Clamp will adjust font sizes, but we can fine-tune margins if needed */
+  .home-container h2 {
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: var(--spacing-unit);
+  }
+   /* clamp values should handle small screens well, minimal overrides needed */
+}

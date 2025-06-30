@@ -1,11 +1,11 @@
 // Project1.js
 import React from 'react';
 import Project1_pic from '../images/dancing_groot.gif';
-import './project1.css'; // Import the CSS file
+// import './project1.css'; // CSS will be handled by projects.css project-card style
 
 function Project1() {
     return (
-        <div className="project-content">
+        <div className="project-card"> {/* Changed class name */}
             <h3>Dancing Groot</h3>
             <div className="project-image-container">
                 <img src={Project1_pic} alt="Dancing Groot" />
