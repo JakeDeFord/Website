@@ -23,13 +23,21 @@
   align-items: center; /* Align items vertically */
 }
 
-.footer-button {
+.footer-buttons a { /* Target the anchor tags for padding */
+  display: inline-block; /* Allow padding and correct alignment */
+  padding: calc(var(--spacing-unit) * 0.5); /* Add padding to increase tappable area */
+  margin: 0 calc(var(--spacing-unit) * 0.25); /* Adjust margin if needed */
+  line-height: 0; /* Prevent extra space if anchor wraps image oddly */
+}
+
+.footer-button { /* This is the img element */
   width: 28px; /* Slightly adjusted size */
   height: 28px; /* Slightly adjusted size */
-  margin: 0 calc(var(--spacing-unit) * 0.5); /* Use spacing unit for margins */
+  /* Margin is removed from img and applied to <a> or controlled by <a>'s padding */
   cursor: pointer;
   transition: opacity 0.3s ease;
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Keep icons white if they are dark by default */
+  vertical-align: middle; /* Helps with alignment within the padded anchor */
 }
 
 .footer-button:hover {

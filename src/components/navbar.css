@@ -54,11 +54,16 @@ nav.navbar a.active {
 }
 
 /* Mobile version styles */
-.menu-icon {
+.menu-icon, /* Keep for reference if any other JS refers to it, though .menu-button is preferred now */
+.menu-button {
   display: none; /* Hidden by default, shown in media query */
   font-size: 1.5rem; /* Adjusted size */
   cursor: pointer;
   color: var(--text-color-light);
+  background-color: transparent;
+  border: none;
+  padding: 0; /* Adjust as needed */
+  margin: 0; /* Adjust as needed */
 }
 
 @media (max-width: 768px) {
@@ -75,8 +80,9 @@ nav.navbar a.active {
     margin-bottom: var(--spacing-unit);
   }
 
-  .menu-icon {
-    display: block; /* Show menu icon on mobile */
+  .menu-icon,
+  .menu-button {
+    display: block; /* Show menu icon/button on mobile */
   }
 
   nav.navbar ul.regular-menu {

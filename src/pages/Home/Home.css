@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 120px); /* Approximate height: viewport - (nav + footer) */
+  /* min-height: calc(100vh - 120px); */ /* Removed: Rely on parent flex for height */
   /* Assumes .background (parent of Home.js's output) has appropriate background color, e.g. var(--primary-light) */
   padding: calc(var(--spacing-unit) * 3); /* More padding for whitespace */
   text-align: center;
@@ -57,7 +57,7 @@
 /* Responsive adjustments (clamp handles font sizes, mostly for container padding/min-height) */
 @media (max-width: 768px) {
   .home-container {
-    min-height: calc(100vh - 100px);
+    /* min-height: calc(100vh - 100px); */ /* Removed: Rely on parent flex for height */
     padding: calc(var(--spacing-unit) * 2);
   }
   /* Clamp will adjust font sizes, but we can fine-tune margins if needed */

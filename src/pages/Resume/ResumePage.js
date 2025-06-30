@@ -7,7 +7,6 @@ function ResumePage() {
   // Renamed component
   return (
     <div className="resume-page-container">
-      <h2>My Resume</h2>
       <div className="resume-iframe-container">
         <iframe
           src="https://drive.google.com/file/d/1uLb4DXeYWtq9Q3hBSUnmcYjRNUpQoY87/preview"
