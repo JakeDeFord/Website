@@ -8,6 +8,15 @@
 # testing
 /coverage
 
+# Playwright (generated; do not commit)
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Duplicate resume at repo root — served copy lives under public/
+/DeFord_Resume_2026_software-2.pdf
+
 # production
 /build
 

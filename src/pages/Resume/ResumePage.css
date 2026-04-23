@@ -3,41 +3,153 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: calc(var(--spacing-unit) * 2);
-  background-color: var(--primary-light);
-  min-height: calc(80vh);
+  padding: 120px var(--space-gutter) 60px;
+  box-sizing: border-box;
 }
 
-.resume-page-container h2 {
+.resume-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: calc(var(--space-unit) * 4);
+  text-align: center;
+}
+
+.resume-header h2 {
   font-family: var(--font-heading);
-  color: var(--text-color-dark);
-  font-size: 2.5rem;
-  margin-bottom: calc(var(--spacing-unit) * 2);
+  color: var(--color-text-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
 }
 
-.resume-iframe-container {
+.resume-viewer-container {
   width: 100%;
-  max-width: 850px;
+  max-width: 1000px;
   height: calc(100vh - 200px);
-  min-height: 600px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  min-height: 800px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-surface-border);
+  background-color: var(--color-surface);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  position: relative; /* Added for absolute positioning of toolbar */
 }
 
-.resume-pdf { /* This is the iframe itself */
-  width: 100%;
-  height: 100%;
+.resume-viewer-container.glass-panel {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.pdf-toolbar {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  background-color: rgba(30, 30, 30, 0.85); /* Semi-transparent dark grey */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 40px; /* Pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.resume-viewer-container:hover .pdf-toolbar {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pdf-toolbar-divider {
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.pdf-btn {
+  background: transparent;
   border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.pdf-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-primary);
+}
+
+.pdf-zoom-level {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: #fff;
+  min-width: 44px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.pdf-document-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  background-color: #222; /* Darker background to contrast white PDF */
+}
+
+.pdf-page {
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.pdf-loading {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
-  .resume-page-container h2 {
-    font-size: 2rem;
+  .resume-page-container {
+    padding: 100px var(--space-gutter) 40px;
   }
-  .resume-iframe-container {
-    height: calc(90vh - 150px);
-    min-height: 500px;
-    max-width: 100%;
+
+  .resume-viewer-container {
+    height: auto;
+    min-height: auto;
+  }
+  
+  .pdf-document-wrapper {
+    padding: 16px 16px 88px 16px;
+    justify-content: center;
+  }
+  
+  .download-text {
+    display: none;
+  }
+  
+  .pdf-toolbar {
+    opacity: 1; /* Always visible on mobile since there's no hover */
+    visibility: visible;
+    bottom: 24px;
   }
 }

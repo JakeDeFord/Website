@@ -1,45 +1,53 @@
-/* footer.css */
+/* footer.css - Architectural Portfolio System */
 .footer {
-  background-color: var(--primary-dark);
-  color: var(--text-color-light);
-  text-align: center;
-  padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit); /* Increased padding */
-  /* bottom: 0; */ /* Removed, as flex layout in App.js handles positioning */
-  /* left: 0; */ /* Removed */
-  /* width: 100%; */ /* Removed, let flexbox handle width */
-  z-index: 999; /* Ensure it's above background but below sticky navbar if navbar z-index is higher */
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow on top */
-  font-family: var(--font-body);
+  width: 100%;
+  border-top: 1px solid var(--color-surface-border);
+  background-color: var(--color-base);
+  padding: 40px var(--space-gutter);
+  box-sizing: border-box;
 }
 
-.footer p {
-  margin: 0 0 calc(var(--spacing-unit) * 0.75) 0; /* Add some spacing below the text */
-  font-size: 0.9rem;
-}
-
-.footer-buttons {
+.footer-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center; /* Align items vertically */
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
 }
 
-.footer-buttons a { /* Target the anchor tags for padding */
-  display: inline-block; /* Allow padding and correct alignment */
-  padding: calc(var(--spacing-unit) * 0.5); /* Add padding to increase tappable area */
-  margin: 0 calc(var(--spacing-unit) * 0.25); /* Adjust margin if needed */
-  line-height: 0; /* Prevent extra space if anchor wraps image oddly */
+.footer-left p {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.footer-button { /* This is the img element */
-  width: 28px; /* Slightly adjusted size */
-  height: 28px; /* Slightly adjusted size */
-  /* Margin is removed from img and applied to <a> or controlled by <a>'s padding */
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Keep icons white if they are dark by default */
-  vertical-align: middle; /* Helps with alignment within the padded anchor */
+.footer-right {
+  display: flex;
+  gap: 32px;
 }
 
-.footer-button:hover {
-  opacity: 0.8; /* Slight hover effect */
+.footer-right a {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  transition: color 0.2s ease;
+  text-transform: uppercase;
+}
+
+.footer-right a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

@@ -11,10 +11,10 @@ function Project3() {
                 <img src={Project3_pic} alt="Communication Instrument" />
             </div>
             <p>
-                Devised and assessed a budget-friendly alternative to a costly commercial product. This device included an Arduino Due, an ethernet shield, and a proto shield.
+                Devised and assessed a budget-friendly alternative to a costly commercial product. This device included an Arduino Due, an Ethernet shield, and a proto shield.
                 This device was created to be a drop-in instrument that can communicate with hardware using most protocols. These protocols include SPI, I2C, UART, GPIO, and PWM.
-                Designed as an ethernet controlled instrument, this device can be used to control a variety of devices as well as program EEPROMs, microcontrollers, and more.
-                The device hosted its own TCP server that the python driver connected to and sent commands to. A custom packet message was designed that consisted of a command, an address,
+                Designed as an Ethernet-controlled instrument, this device can be used to control a variety of devices as well as program EEPROMs, microcontrollers, and more.
+                The device hosted its own TCP server that the Python driver connected to and sent commands to. A custom packet message was designed that consisted of a command, an address,
                 and a payload.
             </p>
             <a href="https://github.com/JakeDeFord/Arduino_Project" target="_blank" rel="noopener noreferrer"> {/* Removed trailing space in URL */}

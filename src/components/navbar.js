@@ -1,86 +1,85 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom'; // Changed Link to NavLink
+import { NavLink } from 'react-router-dom';
 import './navbar.css';
 
 function Navbar() {
-  // State to track mobile status
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Effect to update isMobile on window resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      // Close menu if resizing to desktop view
       if (window.innerWidth > 768) {
         setIsMenuOpen(false);
       }
     };
 
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  // Helper function to render NavLink, applying active class
   const renderNavLink = (to, text) => (
     <NavLink
       to={to}
-      onClick={closeMenu} // Close menu on link click for mobile
-      className={({ isActive }) => (isActive ? 'active' : '')}
+      onClick={closeMenu}
+      className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
     >
       {text}
+      <span className="active-dot"></span>
     </NavLink>
   );
 
   return (
-    <nav className="navbar"> {/* Ensure this class matches CSS */}
-      <div className="header">
-        <h2>Jake DeFord</h2>
-        {isMobile && ( // Show menu icon only on mobile
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-inner">
+        <div className="brand">
+          <NavLink to="/" onClick={closeMenu}>Jake DeFord</NavLink>
+        </div>
+
+        {isMobile && (
           <button
             className="menu-button"
             onClick={toggleMenu}
             aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
             aria-label="Toggle navigation menu"
           >
-            &#9776; {/* Hamburger icon */}
+            <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </button>
         )}
+
+        <div className={`nav-menu ${isMobile ? 'mobile' : 'desktop'} ${isMenuOpen ? 'open' : ''}`}>
+          <ul className="nav-links">
+            <li>{renderNavLink("/", "Home")}</li>
+            <li>{renderNavLink("/resume", "Experience")}</li>
+            <li>{renderNavLink("/projects", "Stack & projects")}</li>
+            <li>{renderNavLink("/contact", "Contact")}</li>
+          </ul>
+          
+          <div className="nav-actions">
+            <NavLink to="/contact" className="btn-primary" onClick={closeMenu}>Let's Talk</NavLink>
+          </div>
+        </div>
       </div>
-
-      {/* Mobile Menu: shown if isMobile and isMenuOpen */}
-      {isMobile && (
-        <ul
-          id="mobile-menu"
-          className={`dropdown-menu ${isMenuOpen ? 'open' : ''}`}
-        >
-          <li>{renderNavLink("/", "Home")}</li>
-          <li>{renderNavLink("/about", "About")}</li>
-          <li>{renderNavLink("/projects", "Projects")}</li>
-          <li>{renderNavLink("/resume", "Resume")}</li>
-          <li>{renderNavLink("/contact", "Contact")}</li>
-        </ul>
-      )}
-
-      {/* Desktop Menu: shown if not isMobile */}
-      {!isMobile && (
-        <ul className="regular-menu">
-          <li>{renderNavLink("/", "Home")}</li>
-          <li>{renderNavLink("/about", "About")}</li>
-          <li>{renderNavLink("/projects", "Projects")}</li>
-          <li>{renderNavLink("/resume", "Resume")}</li>
-          <li>{renderNavLink("/contact", "Contact")}</li>
-        </ul>
-      )}
     </nav>
   );
 }

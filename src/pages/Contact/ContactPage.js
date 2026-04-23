@@ -1,26 +1,32 @@
 import React from 'react';
-import './ContactPage.css'; // Adjusted path
+import './ContactPage.css';
 
-function ContactPage() { // Renamed component
+function ContactPage() {
   return (
-    <div className="contact-container">
-      <h2>Contact Me</h2>
-      <p>If you have any questions or would like to get in touch, feel free to reach out using the methods below:</p>
-
-      <div className="contact-method">
-        <span className="contact-label">Email:</span>
-        <a href="mailto:jdeford199@gmail.com">jdeford199@gmail.com</a>
+    <div className="contact-page-container content-container">
+      <div className="contact-header">
+        <h2>CONTACT ME</h2>
+        <p>If you have any questions or would like to get in touch, feel free to reach out using the methods below.</p>
       </div>
 
-      <div className="contact-method">
-        <span className="contact-label">Social Media:</span>
-        <a href="https://www.linkedin.com/in/jake-deford" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.twitter.com/jakedeford" target="_blank" rel="noopener noreferrer">Twitter</a>
-      </div>
+      <div className="contact-card glass-panel">
+        <div className="contact-method">
+          <span className="contact-label">Email</span>
+          <a href="mailto:jdeford199@gmail.com" className="contact-link">jdeford199@gmail.com</a>
+        </div>
 
-      <div className="contact-method">
-        <span className="contact-label">Phone:</span>
-        <a href="tel:585-494-7522">(585) 494-7522</a>
+        <div className="contact-method">
+          <span className="contact-label">Social Media</span>
+          <div className="contact-links">
+            <a href="https://www.linkedin.com/in/jake-deford" target="_blank" rel="noopener noreferrer" className="contact-link">LinkedIn</a>
+            <a href="https://www.twitter.com/jakedeford" target="_blank" rel="noopener noreferrer" className="contact-link">Twitter</a>
+          </div>
+        </div>
+
+        <div className="contact-method">
+          <span className="contact-label">Calls</span>
+          <span className="contact-link">Happy to coordinate a voice call after we connect by email or LinkedIn.</span>
+        </div>
       </div>
     </div>
   );

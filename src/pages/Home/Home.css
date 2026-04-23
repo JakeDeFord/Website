@@ -1,74 +1,177 @@
-/* Home.css */
+/* Home.css - Architectural Portfolio System */
 .home-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* min-height: calc(100vh - 120px); */ /* Removed: Rely on parent flex for height */
-  /* Assumes .background (parent of Home.js's output) has appropriate background color, e.g. var(--primary-light) */
-  padding: calc(var(--spacing-unit) * 3); /* More padding for whitespace */
-  text-align: center;
-  color: var(--text-color-dark);
-  overflow: hidden; /* Prevent scrollbars if any hover effects slightly increase size */
+  padding: 120px var(--space-gutter) 60px;
 }
 
-.home-container h2 {
+/* Hero Section */
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 5);
+  margin-bottom: 120px;
+}
+
+.hero-title {
   font-family: var(--font-heading);
-  /* Responsive font size: min, preferred (viewport-based), max */
-  font-size: clamp(2.8rem, 8vw, 6rem);
-  font-weight: 800; /* Bolder for impact */
-  color: var(--text-color-dark);
-  line-height: 1.15;
-  letter-spacing: -0.02em; /* Subtle tightening */
-  margin-bottom: calc(var(--spacing-unit) * 2); /* More space after headline */
-  /* CSS Transition for hover effects */
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-weight: 800;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--color-text-heading);
+  margin: 0;
 }
 
-.home-container h2:hover {
-  transform: scale(1.03);
-  color: var(--accent-color);
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 4);
+  max-width: 600px;
 }
 
-.home-container p {
+.hero-description {
   font-family: var(--font-body);
-  font-size: clamp(1.1rem, 3vw, 1.5rem); /* Responsive font size */
-  line-height: 1.7;
-  text-align: center;
-  margin-bottom: calc(var(--spacing-unit) * 1.5);
-  max-width: 55ch; /* Slightly narrower for better readability at larger font sizes */
-  color: var(--text-color-dark);
-  /* CSS Transition for hover effects */
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
 }
 
-.home-container p:hover {
-  transform: translateY(-3px) scale(1.01); /* Slight lift and subtle scale */
-  color: var(--accent-color); /* Or a slightly darker shade of text-color-dark */
+.hero-actions {
+  display: flex;
+  gap: calc(var(--space-unit) * 2);
+  flex-wrap: wrap;
 }
 
-/* Specific styling for the first paragraph if needed for hierarchy */
-.home-container p:first-of-type {
-  /* font-size: clamp(1.2rem, 3.5vw, 1.75rem); */ /* Example: make first paragraph slightly larger */
-  /* color: #555; */ /* Example: slightly different color */
+/* Skills Section */
+.skills-section {
+  margin-bottom: 120px;
 }
 
+.section-header {
+  margin-bottom: calc(var(--space-unit) * 5);
+  border-bottom: 1px solid var(--color-surface-border);
+  padding-bottom: calc(var(--space-unit) * 2);
+}
 
-/* Responsive adjustments (clamp handles font sizes, mostly for container padding/min-height) */
+.section-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-heading);
+  margin: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: calc(var(--space-unit) * 3);
+}
+
+.skill-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-surface-border);
+  border-radius: var(--radius-lg);
+  padding: calc(var(--space-unit) * 4);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.skill-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(40, 167, 69, 0.1);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: calc(var(--space-unit) * 3);
+}
+
+.skill-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--color-text-heading);
+  margin: 0 0 calc(var(--space-unit) * 1.5) 0;
+}
+
+.skill-card p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Contact Callout */
+.contact-callout {
+  margin-bottom: 60px;
+}
+
+.home-contact-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-surface-border);
+  padding: calc(var(--space-unit) * 6);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: calc(var(--space-unit) * 4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.home-contact-card.glass-panel {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.home-contact-info {
+  max-width: 500px;
+}
+
+.home-contact-info h2 {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 32px);
+  color: var(--color-text-heading);
+  margin: 0 0 calc(var(--space-unit) * 2) 0;
+}
+
+.home-contact-info p {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 900px) {
+  .hero-section {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
 @media (max-width: 768px) {
   .home-container {
-    /* min-height: calc(100vh - 100px); */ /* Removed: Rely on parent flex for height */
-    padding: calc(var(--spacing-unit) * 2);
+    padding: 100px var(--space-gutter) 40px;
   }
-  /* Clamp will adjust font sizes, but we can fine-tune margins if needed */
-  .home-container h2 {
-    margin-bottom: calc(var(--spacing-unit) * 1.5);
+  
+  .home-contact-card {
+    padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 3);
+    flex-direction: column;
+    align-items: flex-start;
   }
-}
-
-@media (max-width: 480px) {
-  .home-container {
-    padding: var(--spacing-unit);
-  }
-   /* clamp values should handle small screens well, minimal overrides needed */
 }

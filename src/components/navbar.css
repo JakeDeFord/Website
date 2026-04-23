@@ -1,124 +1,164 @@
-/* navbar.css */
+/* navbar.css - Architectural Portfolio System */
 nav.navbar {
-  /* Changed from nav to nav.navbar for more specificity */
-  background-color: var(--primary-dark);
-  color: var(--text-color-light);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+nav.navbar.scrolled {
+  background-color: rgba(10, 10, 10, 0.85); /* Deep Onyx with transparency */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  position: sticky; /* Makes navbar sticky */
-  top: 0; /* Stick to the top */
-  z-index: 1000; /* Ensure it's above other content */
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 24px var(--space-gutter);
+  box-sizing: border-box;
 }
 
-nav.navbar .header h2 {
-  /* Target h2 within .header specifically */
+.brand a {
   font-family: var(--font-heading);
-  color: var(--text-color-light);
-  margin: 0;
-  font-size: 1.5rem; /* Example size, adjust as needed */
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-heading);
+  text-decoration: none;
 }
 
-nav.navbar ul {
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.nav-links {
   display: flex;
   list-style: none;
+  margin: 0;
   padding: 0;
-  margin: 0; /* Reset margin for ul */
+  gap: 32px;
 }
 
-nav.navbar li {
-  margin-right: var(--spacing-unit); /* Consistent spacing */
-}
-
-nav.navbar li:last-child {
-  margin-right: 0; /* No margin for the last item */
-}
-
-nav.navbar a {
-  color: var(--text-color-light);
-  text-decoration: none;
+.nav-link {
+  position: relative;
   font-family: var(--font-body);
-  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
-  border-radius: var(--border-radius);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-nav.navbar a:hover,
-nav.navbar a.active {
-  /* Style for active link */
-  background-color: var(--accent-color);
-  color: var(--text-color-light);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-muted);
   text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.2s ease;
 }
 
-/* Mobile version styles */
-.menu-icon, /* Keep for reference if any other JS refers to it, though .menu-button is preferred now */
+.nav-link:hover, .nav-link.active {
+  color: var(--color-text-heading);
+}
+
+.active-dot {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link.active .active-dot {
+  opacity: 1;
+}
+
+/* Mobile styles */
 .menu-button {
-  display: none; /* Hidden by default, shown in media query */
-  font-size: 1.5rem; /* Adjusted size */
-  cursor: pointer;
-  color: var(--text-color-light);
-  background-color: transparent;
+  display: none;
+  background: none;
   border: none;
-  padding: 0; /* Adjust as needed */
-  margin: 0; /* Adjust as needed */
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
 }
 
-@media (max-width: 768px) {
-  nav.navbar {
-    flex-direction: column;
-    align-items: flex-start; /* Align items to the start for mobile */
-  }
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: var(--spacing-unit);
-  }
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--color-text-heading);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
 
-  .menu-icon,
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
   .menu-button {
-    display: block; /* Show menu icon/button on mobile */
+    display: block;
   }
-
-  nav.navbar ul.regular-menu {
-    /* Target .regular-menu specifically */
-    display: none; /* Hide regular menu by default on mobile */
+  
+  .nav-menu.desktop {
+    display: none;
+  }
+  
+  .nav-menu.mobile {
+    display: flex;
     flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    align-items: flex-start; /* Align items to the start */
+    height: 100vh;
+    background-color: var(--color-base);
+    padding-top: 100px;
+    gap: 32px;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 999;
   }
-
-  nav.navbar ul.dropdown-menu {
-    /* Target .dropdown-menu specifically */
-    display: none; /* <<<< CORRECTED: Hide by default on mobile */
+  
+  .nav-menu.mobile.open {
+    transform: translateY(0);
+  }
+  
+  .nav-links {
     flex-direction: column;
-    width: 100%;
-    align-items: flex-start; /* Align items to the start */
+    align-items: center;
+    gap: 24px;
   }
-
-  nav.navbar ul li {
-    margin-right: 0;
-    margin-bottom: calc(
-      var(--spacing-unit) * 0.5
-    ); /* Space between items in column */
-    width: 100%; /* Make li take full width */
-  }
-
-  nav.navbar ul li a {
-    display: block; /* Make links take full width for easier tapping */
-    padding: var(--spacing-unit); /* Larger touch target */
-    width: 100%;
-    box-sizing: border-box; /* Include padding in width calculation */
-  }
-
-  /* This class will be toggled by JS to show the menu */
-  /* nav.navbar ul.regular-menu.open, -- Removed as .regular-menu is display:none on mobile */
-  nav.navbar ul.dropdown-menu.open {
-    display: flex; /* This makes it visible */
+  
+  .nav-link {
+    font-size: 18px;
   }
 }
