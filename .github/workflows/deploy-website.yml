@@ -1,0 +1,50 @@
+# Build the React app and publish static files to the jakedeford.github.io repo (gh-pages branch).
+# Requires a repository secret: GH_PAGES_DEPLOY_TOKEN — a fine-grained or classic PAT with
+# Contents: Read and write on repository JakeDeFord/jakedeford.github.io (and read on Website if using fine-grained).
+
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-website
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: SPA fallback (copy index.html to 404.html)
+        run: cp build/index.html build/404.html
+
+      - name: Deploy to jakedeford.github.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.GH_PAGES_DEPLOY_TOKEN }}
+          external_repository: JakeDeFord/jakedeford.github.io
+          publish_branch: gh-pages
+          publish_dir: ./build
+          user_name: github-actions[bot]
+          user_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit_message: "chore: deploy website from JakeDeFord/Website@${{ github.sha }}"
