@@ -42,7 +42,7 @@ test.describe('Home Page', () => {
 
     const talkBtn = page.locator('.home-contact-card .btn-primary');
     await expect(talkBtn).toBeVisible();
-    await expect(talkBtn).toHaveText("VIEW RESUME");
+    await expect(talkBtn).toHaveText('VIEW RÉSUMÉ (PDF)');
   });
 });
 
@@ -53,7 +53,7 @@ test.describe('Navigation - Desktop vs Mobile', () => {
     await page.goto('/');
     
     const navLinks = page.locator('.nav-menu.desktop .nav-links li');
-    await expect(navLinks).toHaveCount(4);
+    await expect(navLinks).toHaveCount(5);
     await expect(page.locator('.menu-button')).toBeHidden();
   });
 
@@ -77,6 +77,6 @@ test.describe('Navigation - Desktop vs Mobile', () => {
     await expect(mobileMenu).toHaveClass(/open/);
     
     const mobileLinks = mobileMenu.locator('.nav-links li');
-    await expect(mobileLinks).toHaveCount(4);
+    await expect(mobileLinks).toHaveCount(5);
   });
 });

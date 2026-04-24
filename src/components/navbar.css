@@ -34,6 +34,16 @@ nav.navbar.scrolled {
   letter-spacing: 0.1em;
   color: var(--color-text-heading);
   text-decoration: none;
+  display: inline-block;
+  transition: transform var(--duration-medium) var(--ease-out-smooth), color var(--duration-fast) ease, letter-spacing var(--duration-medium) ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.brand a:hover {
+  transform: scale(1.04);
+  color: #ffffff;
+  letter-spacing: 0.11em;
 }
 
 .nav-menu {
@@ -58,11 +68,19 @@ nav.navbar.scrolled {
   color: var(--color-text-muted);
   text-decoration: none;
   padding: 8px 0;
-  transition: color 0.2s ease;
+  transition: color var(--duration-fast) ease, transform var(--duration-medium) var(--ease-out-smooth);
+  display: inline-block;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
   color: var(--color-text-heading);
+}
+
+.nav-link:hover {
+  transform: translate3d(0, -2px, 0);
 }
 
 .active-dot {
@@ -160,5 +178,18 @@ nav.navbar.scrolled {
   
   .nav-link {
     font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand a,
+  .nav-link {
+    transition: none;
+  }
+
+  .brand a:hover,
+  .nav-link:hover {
+    transform: none;
+    letter-spacing: inherit;
   }
 }

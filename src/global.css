@@ -26,6 +26,12 @@
   --space-gutter: 32px;
   --space-section: 160px;
   --container-max: 1280px;
+
+  /* Subtle, GPU-friendly motion (transform / opacity) */
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 0.2s;
+  --duration-medium: 0.28s;
+  --duration-slow: 0.36s;
 }
 
 body {
@@ -68,8 +74,12 @@ a:hover {
   letter-spacing: 0.05em;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease,
+    transform var(--duration-medium) var(--ease-out-smooth);
   text-transform: uppercase;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .btn-primary {
@@ -82,6 +92,7 @@ a:hover {
   background-color: var(--color-primary-dim);
   box-shadow: 0 4px 20px rgba(40, 167, 69, 0.2);
   color: #000000;
+  transform: translate3d(0, -1px, 0) scale(1.02);
 }
 
 .btn-outline {
@@ -93,6 +104,7 @@ a:hover {
 .btn-outline:hover {
   border-color: var(--color-text);
   background-color: rgba(255, 255, 255, 0.05);
+  transform: translate3d(0, -1px, 0) scale(1.02);
 }
 
 .app-container {
@@ -108,4 +120,16 @@ a:hover {
   margin: 0 auto;
   padding: 0 var(--space-gutter);
   box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-outline {
+    transition-duration: 0.01ms;
+  }
+
+  .btn-primary:hover,
+  .btn-outline:hover {
+    transform: none;
+  }
 }

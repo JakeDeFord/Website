@@ -22,13 +22,33 @@
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 0;
+  display: inline-block;
+  transition: transform var(--duration-slow) var(--ease-out-smooth), text-shadow var(--duration-slow) ease, color var(--duration-medium) ease;
+  transform-origin: center;
+  cursor: default;
+  text-shadow: 0 0 0 rgba(40, 167, 69, 0);
+}
+
+.resume-header h2:hover {
+  transform: scale(1.02);
+  text-shadow: 0 0 36px rgba(40, 167, 69, 0.16);
+  color: #ffffff;
+}
+
+.resume-subtitle {
+  margin: calc(var(--space-unit) * 2) 0 0 0;
+  max-width: 36rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .resume-viewer-container {
   width: 100%;
   max-width: 1000px;
-  height: calc(100vh - 200px);
-  min-height: 800px;
+  height: calc(100vh - 170px);
+  min-height: 420px;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-surface-border);
   background-color: var(--color-surface);
@@ -36,7 +56,16 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  overscroll-behavior: contain;
   position: relative; /* Added for absolute positioning of toolbar */
+  transition: border-color var(--duration-medium) ease, box-shadow var(--duration-medium) ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.resume-viewer-container:hover {
+  border-color: rgba(40, 167, 69, 0.35);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
 }
 
 .resume-viewer-container.glass-panel {
@@ -44,6 +73,7 @@
   -webkit-backdrop-filter: blur(20px);
 }
 
+/* Toolbar geometry + wrapper bottom padding drive PDF “fit” scale via measured overlap in ResumePage.js */
 .pdf-toolbar {
   position: absolute;
   bottom: 32px;
@@ -86,12 +116,13 @@
   justify-content: center;
   padding: 8px;
   border-radius: 50%;
-  transition: all 0.2s ease;
+  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease, transform var(--duration-medium) var(--ease-out-smooth);
 }
 
 .pdf-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
   color: var(--color-primary);
+  transform: scale(1.08);
 }
 
 .pdf-zoom-level {
@@ -105,12 +136,37 @@
 
 .pdf-document-wrapper {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: auto;
-  padding: 32px;
+  padding: 14px 18px 76px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* flex-start on both axes so scrollLeft/scrollTop 0 reach the real edges; centering when the PDF is smaller uses auto margins on .pdf-document-surface */
+  align-items: flex-start;
+  justify-content: flex-start;
   background-color: #222; /* Darker background to contrast white PDF */
+  overscroll-behavior: contain;
+  touch-action: pan-x pan-y;
+}
+
+.pdf-document-wrapper--scrollable {
+  cursor: grab;
+}
+
+.pdf-document-wrapper.is-panning {
+  cursor: grabbing;
+  user-select: none;
+  touch-action: none;
+}
+
+.pdf-document-surface {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  /* Narrower/shorter than the scrollport: center; wider/taller: auto margins go to 0 so scroll reaches true top-left */
+  margin: auto;
 }
 
 .pdf-page {
@@ -130,26 +186,86 @@
 
 @media (max-width: 768px) {
   .resume-page-container {
-    padding: 100px var(--space-gutter) 40px;
+    padding: 88px max(16px, env(safe-area-inset-left, 0px)) 16px max(16px, env(safe-area-inset-right, 0px));
+    min-height: 100vh;
+    min-height: 100dvh;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
   }
 
+  .resume-header {
+    margin-bottom: calc(var(--space-unit) * 3);
+  }
+
+  .resume-subtitle {
+    font-size: 0.875rem;
+    padding: 0 var(--space-unit);
+  }
+
+  /* Definite height so the scroll region and scale math match the real viewport */
   .resume-viewer-container {
-    height: auto;
-    min-height: auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: 260px;
+    height: calc(100vh - 200px);
+    height: calc(100dvh - 200px);
   }
-  
+
+  /* Bottom padding ≥ toolbar stack (12px + inset + ~64px pill) so scroll clears the bar; fit reserve is measured from layout */
   .pdf-document-wrapper {
-    padding: 16px 16px 88px 16px;
-    justify-content: center;
+    padding: 12px 12px calc(96px + env(safe-area-inset-bottom, 0px));
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    justify-content: flex-start;
   }
-  
+
   .download-text {
     display: none;
   }
-  
+
   .pdf-toolbar {
-    opacity: 1; /* Always visible on mobile since there's no hover */
+    opacity: 1;
     visibility: visible;
-    bottom: 24px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 24px);
+    padding: 10px 14px;
+    gap: 12px;
+  }
+
+  .pdf-btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    touch-action: manipulation;
+  }
+
+  .pdf-zoom-level {
+    font-size: 13px;
+    min-width: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-header h2,
+  .resume-viewer-container,
+  .pdf-btn {
+    transition: none;
+  }
+
+  .resume-header h2:hover {
+    transform: none;
+    text-shadow: none;
+  }
+
+  .resume-viewer-container:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: var(--color-surface-border);
+  }
+
+  .pdf-btn:hover {
+    transform: none;
   }
 }

@@ -6,7 +6,10 @@ function ContactPage() {
     <div className="contact-page-container content-container">
       <div className="contact-header">
         <h2>CONTACT ME</h2>
-        <p>If you have any questions or would like to get in touch, feel free to reach out using the methods below.</p>
+        <p>
+          Open to full-stack, embedded, and FPGA-adjacent software roles in the Rochester
+          area or remote-friendly arrangements. Say hello and we can find time to talk.
+        </p>
       </div>
 
       <div className="contact-card glass-panel">
@@ -16,16 +19,18 @@ function ContactPage() {
         </div>
 
         <div className="contact-method">
-          <span className="contact-label">Social Media</span>
+          <span className="contact-label">Professional</span>
           <div className="contact-links">
             <a href="https://www.linkedin.com/in/jake-deford" target="_blank" rel="noopener noreferrer" className="contact-link">LinkedIn</a>
-            <a href="https://www.twitter.com/jakedeford" target="_blank" rel="noopener noreferrer" className="contact-link">Twitter</a>
+            <a href="https://github.com/JakeDeFord" target="_blank" rel="noopener noreferrer" className="contact-link">GitHub</a>
           </div>
         </div>
 
         <div className="contact-method">
           <span className="contact-label">Calls</span>
-          <span className="contact-link">Happy to coordinate a voice call after we connect by email or LinkedIn.</span>
+          <span className="contact-note">
+            Happy to coordinate a voice call after we connect by email or LinkedIn.
+          </span>
         </div>
       </div>
     </div>

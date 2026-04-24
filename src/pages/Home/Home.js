@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
@@ -9,11 +10,19 @@ function Home() {
         <h1 className="hero-title">ENGINEERING<br />REAL-TIME<br />SYSTEMS</h1>
         <div className="hero-content">
           <p className="hero-description">
-            I specialize in building high-performance, embedded systems and scalable full-stack applications. With a focus on precision and efficiency, I bridge the gap between hardware and software to create robust, architectural solutions.
+            I build high-throughput <strong>FPGA</strong> and networking paths, full-stack
+            product software (<strong>Django</strong>, <strong>DRF</strong>, <strong>React</strong>),
+            and self-hosted <strong>CI/CD</strong> with heavy automated testing. I work where
+            hardware metrology, backend APIs, and operator-facing UIs meet.
           </p>
+          <ul className="hero-highlights" aria-label="Recent impact">
+            <li>10 Msps Artix-7 acquisition path · UDP/Ethernet</li>
+            <li>Real-time monitoring · WebSockets, pytest, Playwright</li>
+            <li>Self-hosted pipelines · Docker, Gitea Actions</li>
+          </ul>
           <div className="hero-actions">
-            <a href="/resume" className="btn btn-primary">VIEW EXPERIENCE</a>
-            <a href="/projects" className="btn btn-outline">VIEW STACK</a>
+            <Link to="/experience" className="btn btn-primary">VIEW EXPERIENCE</Link>
+            <Link to="/projects" className="btn btn-outline">VIEW STACK</Link>
           </div>
         </div>
       </section>
@@ -32,7 +41,10 @@ function Home() {
               </svg>
             </div>
             <h3>FPGA & EMBEDDED</h3>
-            <p>Designing high-speed digital circuits and real-time processing systems using VHDL/Verilog and modern FPGAs.</p>
+            <p>
+              <strong>Verilog</strong> on Xilinx FPGAs, AXI/AXIS fabric, and custom UDP/Ethernet
+              for instrument-grade throughput, plus Vivado, simulation, and bring-up.
+            </p>
           </div>
           
           <div className="skill-card">
@@ -43,7 +55,11 @@ function Home() {
               </svg>
             </div>
             <h3>FULL-STACK ARCHITECTURE</h3>
-            <p>Developing scalable backend services and responsive frontend interfaces using React, Node.js, and cloud native technologies.</p>
+            <p>
+              Product backends with <strong>Django</strong> and <strong>DRF</strong>,{' '}
+              <strong>MySQL</strong> data models, and <strong>React</strong> UIs;{' '}
+              <strong>WebSockets</strong> and REST for live telemetry and integrations.
+            </p>
           </div>
 
           <div className="skill-card">
@@ -55,7 +71,11 @@ function Home() {
               </svg>
             </div>
             <h3>SYSTEMS AUTOMATION</h3>
-            <p>Implementing robust CI/CD pipelines and infrastructure as code to ensure reliable deployment and system monitoring.</p>
+            <p>
+              <strong>Docker</strong>-ized builds, <strong>Gitea Actions</strong>,{' '}
+              <strong>pytest</strong> and <strong>Playwright</strong> gates, and private registries, with
+              repeatable deploys and coverage you can point to.
+            </p>
           </div>
         </div>
       </section>
@@ -65,11 +85,16 @@ function Home() {
         <div className="home-contact-card glass-panel">
           <div className="home-contact-info">
             <h2>WANT TO LEARN MORE?</h2>
-            <p>Browse selected projects on Stack, or view my full experience, to see what I can bring to the table.</p>
+            <p>
+              Read the <Link to="/experience" className="home-inline-link">experience</Link> page
+              for role detail, the <Link to="/resume" className="home-inline-link">PDF résumé</Link> for
+              a one-pager, or <Link to="/projects" className="home-inline-link">stack &amp; projects</Link> for
+              build stories.
+            </p>
           </div>
           <div className="hero-actions">
-            <a href="/resume" className="btn btn-primary">VIEW RESUME</a>
-            <a href="/projects" className="btn btn-outline">VIEW STACK</a>
+            <Link to="/resume" className="btn btn-primary">VIEW RÉSUMÉ (PDF)</Link>
+            <Link to="/projects" className="btn btn-outline">VIEW STACK</Link>
           </div>
         </div>
       </section>

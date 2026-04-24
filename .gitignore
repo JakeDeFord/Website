@@ -14,6 +14,9 @@
 /blob-report/
 /playwright/.cache/
 
+# Lighthouse CI (local runs)
+/.lighthouseci/
+
 # Duplicate resume at repo root — served copy lives under public/
 /DeFord_Resume_2026_software-2.pdf
 

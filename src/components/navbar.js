@@ -70,7 +70,8 @@ function Navbar() {
         <div className={`nav-menu ${isMobile ? 'mobile' : 'desktop'} ${isMenuOpen ? 'open' : ''}`}>
           <ul className="nav-links">
             <li>{renderNavLink("/", "Home")}</li>
-            <li>{renderNavLink("/resume", "Experience")}</li>
+            <li>{renderNavLink("/experience", "Experience")}</li>
+            <li>{renderNavLink("/resume", "Résumé")}</li>
             <li>{renderNavLink("/projects", "Stack & projects")}</li>
             <li>{renderNavLink("/contact", "Contact")}</li>
           </ul>
