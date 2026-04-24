@@ -30,7 +30,7 @@
     "test:e2e": "playwright test",
     "lighthouse": "lhci autorun",
     "lighthouse:desktop": "lhci autorun --collect.settings.preset=desktop",
-    "lighthouse:mobile": "lhci autorun --collect.settings.preset=mobile"
+    "lighthouse:mobile": "lhci autorun --collect.settings.formFactor=mobile"
   },
   "eslintConfig": {
     "extends": [
