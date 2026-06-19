@@ -23,7 +23,7 @@ function ProjectsPage() {
           <div className="skills-matrix-col">
             <h4>FPGA / RTL</h4>
             <p>
-              Verilog · Vivado · AXI/AXIS · SPI · UDP/Ethernet · DAC · xelab ·
+              Verilog · Vivado · AXI/AXIS · SPI · I2C · UART · UDP/Ethernet · DAC · ADC ·
               Verible · openFPGALoader
             </p>
           </div>
@@ -42,7 +42,7 @@ function ProjectsPage() {
           </div>
           <div className="skills-matrix-col">
             <h4>Languages &amp; tools</h4>
-            <p>Python · C · JavaScript · SystemVerilog · Linux · Git</p>
+            <p>Python · C · C++ · JavaScript · SystemVerilog · Linux · Git · Bash</p>
           </div>
         </div>
       </section>

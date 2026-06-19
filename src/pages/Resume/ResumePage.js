@@ -207,7 +207,7 @@ function ResumePage() {
           <div className="pdf-toolbar-divider" />
 
           <a
-            href="/DeFord_Resume_2026_software-2.pdf"
+            href="/DeFord_Resume_2026_software.pdf"
             download
             className="pdf-btn"
             aria-label="Download PDF"
@@ -232,7 +232,7 @@ function ResumePage() {
         >
           <div className="pdf-document-surface">
             <Document
-              file="/DeFord_Resume_2026_software-2.pdf"
+              file="/DeFord_Resume_2026_software.pdf"
               onLoadSuccess={onDocumentLoadSuccess}
               loading={<div className="pdf-loading">Loading PDF...</div>}
             >

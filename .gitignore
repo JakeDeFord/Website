@@ -18,7 +18,7 @@
 /.lighthouseci/
 
 # Duplicate resume at repo root — served copy lives under public/
-/DeFord_Resume_2026_software-2.pdf
+/DeFord_Resume_2026_software.pdf
 
 # production
 /build
